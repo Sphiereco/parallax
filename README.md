@@ -8,4 +8,4 @@ Follow the instructions.
 
 `gulp`
 
-Running gulp would start a webserver on `::localhost:8080`
+Running gulp would start a webserver on `localhost:8080`
