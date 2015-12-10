@@ -161,3 +161,7 @@ body {
 .active {
 	color: coral !important;
 }
+
+#website .tagline {
+	max-width: 300px;
+}
