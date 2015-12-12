@@ -20,8 +20,13 @@ gulp.task('html', function() {
         .pipe(gulp.dest(outputDir));
 });
 
+gulp.task('cloneStatic', function() {
+  return gulp.src('./static/**/*')
+        .pipe(gulp.dest(outputDir + '/static'));
+});
+
 gulp.task('watch', function() {
   gulp.watch('./app/views/**/*.jade', ['html']);
 });
 
-gulp.task('default', ['html', 'watch']);
+gulp.task('default', ['html', 'cloneStatic', 'watch']);
