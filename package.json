@@ -1,0 +1,22 @@
+{
+  "name": "parallax-complex",
+  "version": "1.0.0",
+  "description": "Parallax website for Sphiere SDN BHD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sphiereco/parallax.git"
+  },
+  "author": "Samuel Christopher <thesamchris@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sphiereco/parallax/issues"
+  },
+  "homepage": "https://github.com/Sphiereco/parallax#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}
