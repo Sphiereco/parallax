@@ -3,6 +3,8 @@ var gulpJade  = require('gulp-jade');
 var jade      = require('jade');
 var imagemin  = require('gulp-imagemin');
 var pngquant  = require('imagemin-pngquant');
+var uglify    = require('gulp-uglify');
+var gulpif    = require('gulp-if');
 var outputDir = 'build';
 var buildType = process.env.buildtype || 'development';
 
@@ -39,8 +41,20 @@ gulp.task('images', function() {
         .pipe(gulp.dest(outputDir + '/static/img'));
 });
 
-gulp.task('watch', function() {
-  gulp.watch('./app/views/**/*.jade', ['html']);
+gulp.task('js', function() {
+  return gulp.src('./app/js/**/*.js')
+        .pipe(gulpif(buildType === 'production', uglify()))
+        .pipe(gulp.dest(outputDir + '/static/js'));
 });
 
-gulp.task('default', ['html', 'images', 'cloneStatic', 'watch']);
+// gulp.task('cloneJs', function() {
+//   return gulp.src('./app/js/third_party/**/*')
+//         .pipe(gulp.dest(outputDir + '/static/js/third_party/'));
+// });
+
+gulp.task('watch', function() {
+  gulp.watch('./app/views/**/*.jade', ['html']);
+  gulp.watch('./app/js/**/*.js', ['js']);
+});
+
+gulp.task('default', ['html', 'images', 'js', 'cloneStatic', 'watch']);
