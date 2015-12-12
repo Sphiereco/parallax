@@ -1,115 +1,24 @@
 doctype html
 html
   head
-    meta(http-equiv='Content-Type', content='application/xhtml+xml; charset=UTF-8')
-    title Sphiere | Services
-    // Practical proven viewport for better mobile experience
-    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0')
-    link(type='text/css', rel='stylesheet', href='static/css/parallax.css')
-    link(type='text/css', rel='stylesheet', href='static/css/main.css')
+    include partials/header
   body.unloaded
-    .loadBackground(style='background: white; height: 100vh: width: 100vw;')
-    .preloaderCont
-      span.ending
-        img(src='static/img/logo/filled.svg')
-      span.starting
-        img(src='static/img/logo/black.svg')
+    include sections/loader
     #parallax
       // <img alt=".1" class="parallaxBackground" src="static/img/bck.png">
-      #digital-designs
-        .popularResolution.para-totalCenterAlign
-          .fastLayer(style='right: 450px;\
-          top: 450px;')
-            div(alt='1.1')
-              div(style='width:220px;height:400px;background: url(static/img/digital-designs/business-cards.png); background-repeat: no-repeat;background-position: center center;')
-          .fastLayer(style='right: 500px;\
-          top: 450px;')
-            div(alt='0.9')
-              div(style='width:200px;height:340px;background: url(static/img/digital-designs/pen.png); background-repeat: no-repeat;background-position: center center;')
-          .fastLayer(style='right: 760px;\
-          top: 390px;')
-            div(alt='1')
-              div(style='width:210px;height:400px;background: url(static/img/digital-designs/phone.png); background-repeat: no-repeat;background-position: center center;')
-          .fastLayer(style='right: 600px;\
-          top: 40px;')
-            div(alt='1')
-              div(style='width:577px;height:400px;background: url(static/img/digital-designs/ipad.png); background-repeat: no-repeat;background-position: center center;')
-          .story
-            .padded
-              h1 Digital Designs
-              p.tagline
-                | Offers a wide range of designing solutions that is aligned with the client’s corporate identity
-      #website
-        .popularResolution.para-totalCenterAlign
-          // You can create much simpler and fully working layers than that, but nested structure gives you more flexibilty.
-          .fastLayer(style='right: 825px;\
-          top: -20px;')
-            div(alt='2')
-              div(style='width:720px;height:600px;background: url(static/img/website/tv.png); background-repeat: no-repeat;background-position: center center;')
-          .fastLayer(style='right: 355px;\
-          top: 300px;')
-            div(alt='1.1')
-              div(style='width:220px;height:400px;background: url(static/img/website/ipad.png); background-repeat: no-repeat;background-position: center center;')
-          .fastLayer(style='right: 1200px;\
-          top: 325px;')
-            div(alt='0.9')
-              div(style='width:700px;height:340px;background: url(static/img/website/laptop.png); background-repeat: no-repeat;background-position: center center;')
-          .story
-            .padded
-              h1 Website
-              p.tagline.website
-                | Offers a wide range of designing solutions that is aligned with the client’s corporate identity
-      #mobile-apps
-        .popularResolution.para-totalCenterAlign
-          .fastLayer(style='right: 140px;\
-          top: 90px;')
-            div(alt='8')
-              div(style='width:50px;height:50px;background: url(static/img/mobile-applications/leaf.png); background-repeat: no-repeat;background-position: center center;')
-          .fastLayer(style='right: 220px;\
-          top: 185px;')
-            div(alt='7')
-              div(style='width:60px;height:70px;background: url(static/img/mobile-applications/purple.png); background-repeat: no-repeat;background-position: center center;')
-          .fastLayer(style='right: 415px;\
-          top: 220px;')
-            div(alt='6')
-              div(style='width:300px;height:400px;background: url(static/img/mobile-applications/iphone.png); background-repeat: no-repeat;background-position: center center;')
-          .fastLayer(style='right: 400px;\
-          top: 390px;')
-            div(alt='5')
-              div(style='width:95px;height:180px;background: url(static/img/mobile-applications/chrome.png); background-repeat: no-repeat;background-position: center center;')
-          .fastLayer(style='right: 180px;\
-          top: 560px;')
-            div(alt='4')
-              div(style='width:98px;height:106px;background: url(static/img/mobile-applications/drive.png); background-repeat: no-repeat;background-position: center center;')
-          .fastLayer(style='right: 590px;\
-          top: 170px;')
-            div(alt='3')
-              div(style='width:260px;height:230px;background: url(static/img/mobile-applications/docs.png); background-repeat: no-repeat;background-position: center center;')
-          .fastLayer(style='right: 330px;\
-          top: 20px;')
-            div(alt='2')
-              div(style='width:190px;height:165px;background: url(static/img/mobile-applications/hangouts.png); background-repeat: no-repeat;background-position: center center;')
-          .fastLayer(style='right: 660px;\
-          top: 525px;')
-            div(alt='1')
-              div(style='width:270px;height:340px;background: url(static/img/mobile-applications/arrow.png); background-repeat: no-repeat;background-position: center center;')
-          .story
-            .padded
-              h1 Mobile Applications
-              p.tagline.website
-                | Offers a wide range of designing solutions that is aligned with the client’s corporate identity
-    #footer
-      a.mainBtn(href='http://google.com', target='_blank') Main page
-      .right
-        .link-container
-          a(href='#') Digital Desgins
-          a(href='#website') Websites
-          a(href='#mobile-apps') Mobile Applications
+      include sections/digital-designs
+      
+      include sections/website
+      
+      include sections/mobile-applications
+    
+    include partials/footer
+    
     div(style='display:none')
       | Placed here just to make the preloader busy.
-      img(src='http://hotdot.pro/static/img/lp/ipad/5.png')
-      img(src='http://hotdot.pro/static/img/mainPage/intro/2.png')
-      img(src='http://hotdot.pro/static/img/cryingCyan.png')
+      img(src='http://other.com/static/img/lp/ipad/5.png')
+      img(src='http://hti.kdf/static/img/mainPage/intro/2.png')
+      img(src='http://what.dkjf/static/img/cryingCyan.png')
     script(type='text/javascript', src='static/js/third_party/jquery.js')
     script(type='text/javascript', src='static/js/third_party/jquery.mousewheel.js')
     script(type='text/javascript', src='static/js/third_party/jquery.custom.js')
