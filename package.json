@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Sphiereco/parallax#readme",
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "gulp-jade": "^1.1.0",
+    "jade": "^1.11.0"
   }
 }
