@@ -7,6 +7,7 @@ var uglify     = require('gulp-uglify');
 var gulpif     = require('gulp-if');
 var minifyCss  = require('gulp-minify-css');
 var sourcemaps = require('gulp-sourcemaps');
+var connect    = require('gulp-connect');
 var outputDir  = 'build';
 var buildType  = process.env.buildtype || 'development';
 
@@ -23,7 +24,8 @@ gulp.task('html', function() {
 
   return gulp.src('./app/views/index.jade')
         .pipe(gulpJade(config))
-        .pipe(gulp.dest(outputDir));
+        .pipe(gulp.dest(outputDir))
+        .pipe(connect.reload());
 });
 
 
@@ -36,13 +38,15 @@ gulp.task('images', function() {
           use: [pngquant()],
           svgoPlugins: [{removeViewBox: true}]
         }))
-        .pipe(gulp.dest(outputDir + '/static/img'));
+        .pipe(gulp.dest(outputDir + '/static/img'))
+        .pipe(connect.reload());
 });
 
 gulp.task('js', function() {
   return gulp.src('./app/js/**/*.js')
         .pipe(gulpif(buildType === 'production', uglify()))
-        .pipe(gulp.dest(outputDir + '/static/js'));
+        .pipe(gulp.dest(outputDir + '/static/js'))
+        .pipe(connect.reload());
 });
 
 gulp.task('css', function() {
@@ -50,7 +54,8 @@ gulp.task('css', function() {
         .pipe(gulpif(buildType === 'development', sourcemaps.init()))
         .pipe(gulpif(buildType === 'production', minifyCss()))
         .pipe(gulpif(buildType === 'development', sourcemaps.write()))
-        .pipe(gulp.dest(outputDir + '/static/css'));
+        .pipe(gulp.dest(outputDir + '/static/css'))
+        .pipe(connect.reload());
 });
 
 gulp.task('watch', function() {
@@ -59,4 +64,11 @@ gulp.task('watch', function() {
   gulp.watch('./app/css/**/*', ['css']);
 });
 
-gulp.task('default', ['html', 'images', 'js', 'css', 'watch']);
+gulp.task('connect', function() {
+  connect.server({
+    root: outputDir,
+    livereload: true
+  });
+}) ;
+
+gulp.task('default', ['html', 'images', 'js', 'connect', 'css', 'watch']);
